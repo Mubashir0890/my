@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: futbol-miniapp
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: BOT_TOKEN
+        sync: false
+      - key: ADMIN_IDS
+        sync: false
+      - key: BOT_USERNAME
+        sync: false
+    # Ma'lumotlar doimiy saqlanishi uchun pullik rejada disk qo'shing va DATA_DIR=/data qiling:
+    # disk:
+    #   name: data
+    #   mountPath: /data
+    #   sizeGB: 1
